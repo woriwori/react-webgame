@@ -27,7 +27,7 @@
                         second: Math.ceil(Math.random() * 9),
                         result: `정답은 ${prevState.value}!`,
                         value: ''
-                    }))
+                    }));
                 }
                 else {
                     this.setState({
@@ -36,14 +36,18 @@
                         value: ''
                     })
                 }
+                this.input.focus();
             };
             onChange = e => this.setState({ value: e.target.value });
+
+            input;
+
             render() {
                 return (
                     <React.Fragment>
                         <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
                         <form onSubmit={this.onSubmit}>
-                            <input type="number" value={this.state.value} onChange={this.onChange}></input>
+                            <input ref={c => { this.input = c }} type="number" value={this.state.value} onChange={this.onChange}></input>
                             {
                                 /* onChange 안쓰면 콘솔에 warning뜨고, value값도 안바뀐다. */
                             }
