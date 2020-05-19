@@ -9,24 +9,35 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        const e = React.createElement;
-        class LikeButton extends React.Component {
+        class GuGuDan extends React.Component {
             constructor(props) {
                 super(props);
                 this.state = {
-                    liked: false,
-                };
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: '',
+                    result: '',
+                }
             }
             render() {
-                return <button type="submit" onClick={() => { this.setState({ liked: true }) }}>
-                    {this.state.liked ? 'Liked' : 'Like'}
-                </button>;
-                // babel이 JSX (JS + XML)를 변형해줌. 
+                return (
+                    <div>
+                        <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
+                        <form>
+                            <input type="number" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value })}></input>
+                            {
+                                /* onChange 안쓰면 콘솔에 warning뜨고, value값도 안바뀐다. */
+                            }
+                            <button>입력!</button>
+                        </form>
+                        <div>{this.state.result}</div>
+                    </div>
+                );
             }
         }
     </script>
     <script type="text/babel">
-        ReactDOM.render(<LikeButton />, document.querySelector('#root')); // root dom에다가 like button으로 만든 react element 를 붙이겠다.
+        ReactDOM.render(<GuGuDan />, document.querySelector('#root')); // root dom에다가 like button으로 만든 react element 를 붙이겠다.
     </script>
 </body>
 
