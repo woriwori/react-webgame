@@ -22,12 +22,12 @@
             onSubmit = e => {
                 e.preventDefault();
                 if (parseInt(this.state.value) === this.state.first * this.state.second) {
-                    this.setState({
+                    this.setState(prevState => ({
                         first: Math.ceil(Math.random() * 9),
                         second: Math.ceil(Math.random() * 9),
-                        result: `정답은 ${this.state.value}!`,
+                        result: `정답은 ${prevState.value}!`,
                         value: ''
-                    })
+                    }))
                 }
                 else {
                     this.setState({
