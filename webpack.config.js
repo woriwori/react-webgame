@@ -1,5 +1,6 @@
 const path = require('path');
 // node에서 path를 쉽게 조작할 수 있는 기능을 제공함.
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development', // 배포용이면 production
@@ -21,11 +22,23 @@ module.exports = {
         loader: 'babel-loader', // babel loader로 돌리겟다
         options: {
           // 이 옵션을 사용해서
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: [
+            ['@babel/preset-env', { // preset = plugin들의 집합. 
+              targets: { // plugin의 설정을 넣는 방법
+                browsers: ['last  2 chrome versions']
+                // > 1% in KR 이런것도 됨.
+                // browserslist 사이트에서 가능한 조건들을 확인할 수 있음. 
+              }
+          }], 
+          '@babel/preset-react'],
         },
       },
     ],
   },
+
+  plugins: [
+    new webpack.LoaderOptionsPlugin({debug: true}) //babel loader의 모든 options에 debug를 설정하겠다는 뜻. 
+  ],
 
   output: {
     // 출력 (최고 중요)
