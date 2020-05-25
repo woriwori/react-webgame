@@ -52,5 +52,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'), // __dirname이 현재 프로젝트 폴더.(dirname: C:/user/....)
     // join하면 __dirname과 인자로 준 path를 합쳐주는 것.
     filename: 'app.js',
+    publicPath: '/dist/',
   },
 };
