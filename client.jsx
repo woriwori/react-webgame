@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import WordRelay from './WordRelay';
+import NumberBaseball from './NumberBaseball';
 import { hot } from 'react-hot-loader/root';
 
-const Hot = hot(WordRelay);
+const Hot = hot(NumberBaseball);
 
 render(<Hot />, document.getElementById('root'));
