@@ -48,7 +48,10 @@ const RSP = () => {
       interval.current = setInterval(changeHand, 100);
     }, 2000);
   };
-
+  /* 
+  componentDidMount 와 같은건, 함수 내에서 state별로 분기처리를함.
+  useEffect는 useEffect 를 여러번 사용하면 됨.
+  */
   useEffect(() => {
     // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
     interval.current = setInterval(changeHand, 100);
